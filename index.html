@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catálogo de Películas - Bulma</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" /> <!-- Para poder utilizar Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+    <!-- Para poder utilizar Bulma -->
 </head>
 
 <body>
@@ -76,143 +77,249 @@
             </div>
         </div>
     </nav>
-    <section>
+    <section class="section">
         <div class="container">
 
-        <!-- Titulo y boton de agregar -->
-        <div class="level mb-5">
-            <div class="level-left">
-                <div>
-                    <h1 class="title mb-1">Lista de películas</h1>
-                    <p class="subtitle is-6">El cine se vive aquí</p>
+            <!-- Titulo y boton de agregar -->
+            <div class="level mb-5">
+                <div class="level-left">
+                    <div>
+                        <h1 class="title mb-1">Lista de películas</h1>
+                        <p class="subtitle is-6">El cine se vive aquí</p>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <button type="button" class="button is-info js-open-modal" data-target="modalPelicula">
+                        <span class="icon">
+                            <i class="bi bi-plus-lg"></i>
+                        </span>
+                        <span>Agregar</span>
+                    </button>
                 </div>
             </div>
-            <div class="level-right">
-                <button type="button" class="button is-info js-open-modal" data-target="modalPelicula">
-                    <span class="icon">
-                        <i class="bi bi-plus-lg"></i>
-                    </span>
-                    <span>Agregar</span>
-                </button>
-            </div>
-        </div>
 
-        <!-- Tabla de peliculas -->
-        <div class="table-container">
-            <table class="table is-fullwidth is-striped is-hoverable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Película</th>
-                        <th>Género</th>
-                        <th>Año</th>
-                        <th>Operaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>El gran showman</td>
-                        <td>Comedia - Musical</td>
-                        <td>2017</td>
-                        <td>
-                            <div class="buttons are-small">
-                                <button type="button" class="button is-warning" title="Editar">
-                                    <span class="icon">
-                                        <i class="bi bi-pencil-square"></i> <!-- Esto vendría a ser el ícono de editar -->
-                                    </span>
-                                </button>
-                                <button type="button" class="button is-danger" title="Eliminar">
-                                    <span class="icon">
-                                        <i class="bi bi-trash"></i> <!-- Esto vendría a ser el ícono de editar -->
-                                    </span>
-                                </button>
+            <!-- Tabla de peliculas -->
+            <div class="table-container">
+                <table class="table is-fullwidth is-striped is-hoverable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Película</th>
+                            <th>Género</th>
+                            <th>Año</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>El gran showman</td>
+                            <td>Comedia - Musical</td>
+                            <td>2017</td>
+                            <td>
+                                <div class="buttons are-small">
+                                    <button type="button" class="button is-warning" title="Editar">
+                                        <span class="icon">
+                                            <i class="bi bi-pencil-square"></i>
+                                            <!-- Esto vendría a ser el ícono de editar -->
+                                        </span>
+                                    </button>
+                                    <button type="button" class="button is-danger" title="Eliminar">
+                                        <span class="icon">
+                                            <i class="bi bi-trash"></i> <!-- Esto vendría a ser el ícono de editar -->
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>El eterno resplandor de una mente sin recuerdos</td>
+                            <td>Romance - Drama</td>
+                            <td>2004</td>
+                            <td>
+                                <div class="buttons are-small">
+                                    <button type="button" class="button is-warning" title="Editar">
+                                        <span class="icon">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="button is-danger" title="Eliminar">
+                                        <span class="icon">
+                                            <i class="bi bi-trash"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Milagros inesperados</td>
+                            <td>Drama</td>
+                            <td>1999</td>
+                            <td>
+                                <div class="buttons are-small">
+                                    <button type="button" class="button is-warning" title="Editar">
+                                        <span class="icon">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="button is-danger" title="Eliminar">
+                                        <span class="icon">
+                                            <i class="bi bi-trash"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2001: Odisea en el espacio</td>
+                            <td>Ciencia ficción - Aventura</td>
+                            <td>1968</td>
+                            <td>
+                                <div class="buttons are-small">
+                                    <button type="button" class="button is-warning" title="Editar">
+                                        <span class="icon">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="button is-danger" title="Eliminar">
+                                        <span class="icon">
+                                            <i class="bi bi-trash"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Wildwood</td>
+                            <td>Aventura - fantasía</td>
+                            <td>2026</td>
+                            <td>
+                                <div class="buttons are-small">
+                                    <button type="button" class="button is-warning" title="Editar">
+                                        <span class="icon">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="button is-danger" title="Eliminar">
+                                        <span class="icon">
+                                            <i class="bi bi-trash"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- La paginación -->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <a class="pagination-previous is-disabled" title="This is the first page"
+                  >Anterior</a
+                >
+                <a href="#" class="pagination-next">Siguiente</a>
+                <ul class="pagination-list">
+                  <li>
+                    <a
+                      class="pagination-link is-current"
+                      aria-label="Page 1"
+                      aria-current="page"
+                      >1</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="pagination-link" aria-label="Goto page 2">2</a>
+                  </li>
+                  <li>
+                    <a href="#" class="pagination-link" aria-label="Goto page 3">3</a>
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- Modal -->
+              <div id="modalPelicula" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Registro de Película</p>
+                        <button type="button" class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <form id="formPelicula">
+                            <div class="field">
+                                <label class="label" for="titulo">Título</label>
+                                <div class="control">
+                                    <input id="titulo" class="input" type="text" placeholder="Ej. Spider-Man 2" />
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>El eterno resplandor de una mente sin recuerdos</td>
-                        <td>Romance - Drama</td>
-                        <td>2004</td>
-                        <td>
-                            <div class="buttons are-small">
-                                <button type="button" class="button is-warning" title="Editar">
-                                    <span class="icon">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="button is-danger" title="Eliminar">
-                                    <span class="icon">
-                                        <i class="bi bi-trash"></i>
-                                    </span>
-                                </button>
+        
+                            <div class="field">
+                                <label class="label" for="genero">Género</label>
+                                <div class="control">
+                                    <input id="genero" class="input" type="text" placeholder="Ej. Acción" />
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Milagros inesperados</td>
-                        <td>Drama</td>
-                        <td>1999</td>
-                        <td>
-                            <div class="buttons are-small">
-                                <button type="button" class="button is-warning" title="Editar">
-                                    <span class="icon">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="button is-danger" title="Eliminar">
-                                    <span class="icon">
-                                        <i class="bi bi-trash"></i>
-                                    </span>
-                                </button>
+        
+                            <div class="field">
+                                <label class="label" for="anio">Año</label>
+                                <div class="control">
+                                    <input id="anio" class="input" type="number" placeholder="2024" />
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2001: Odisea en el espacio</td>
-                        <td>Ciencia ficción - Aventura</td>
-                        <td>1968</td>
-                        <td>
-                            <div class="buttons are-small">
-                                <button type="button" class="button is-warning" title="Editar">
-                                    <span class="icon">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="button is-danger" title="Eliminar">
-                                    <span class="icon">
-                                        <i class="bi bi-trash"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Wildwood</td>
-                        <td>Aventura -  fantasía</td>
-                        <td>2026</td>
-                        <td>
-                            <div class="buttons are-small">
-                                <button type="button" class="button is-warning" title="Editar">
-                                    <span class="icon">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="button is-danger" title="Eliminar">
-                                    <span class="icon">
-                                        <i class="bi bi-trash"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                        </form>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <div class="buttons">
+                            <button type="button" class="button is-success">Guardar</button>
+                            <button type="button" class="button js-close-modal">Cancelar</button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Script para que el modal pueda funcionar -->
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const openButtons = document.querySelectorAll(".js-open-modal");
+                    openButtons.forEach((btn) => {
+                        btn.addEventListener("click", () => {
+                            const targetId = btn.getAttribute("data-target");
+                            const modal = document.getElementById(targetId);
+                            if (modal) {
+                                modal.classList.add("is-active");
+                            }
+                        });
+                    });
+        
+                    const modals = document.querySelectorAll(".modal");
+                    modals.forEach((modal) => {
+                        const closeTriggers = modal.querySelectorAll(
+                            ".modal-background, .delete, .js-close-modal"
+                        );
+                        closeTriggers.forEach((trigger) => {
+                            trigger.addEventListener("click", () => {
+                                modal.classList.remove("is-active");
+                            });
+                        });
+                    });
+        
+                    const burgers = document.querySelectorAll(".navbar-burger");
+                    burgers.forEach((burger) => {
+                        burger.addEventListener("click", () => {
+                            const targetId = burger.dataset.target;
+                            const targetMenu = document.getElementById(targetId);
+                            burger.classList.toggle("is-active");
+                            if (targetMenu) {
+                                targetMenu.classList.toggle("is-active");
+                            }
+                        });
+                    });
+                });
+            </script>
 
     </section>
 </body>
