@@ -217,113 +217,283 @@
                     </tbody>
                 </table>
             </div>
-
             <!-- La paginación -->
             <nav class="pagination" role="navigation" aria-label="pagination">
-                <a class="pagination-previous is-disabled" title="This is the first page"
-                  >Anterior</a
-                >
+                <a class="pagination-previous is-disabled" title="This is the first page">Anterior</a>
                 <a href="#" class="pagination-next">Siguiente</a>
                 <ul class="pagination-list">
-                  <li>
-                    <a
-                      class="pagination-link is-current"
-                      aria-label="Page 1"
-                      aria-current="page"
-                      >1</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#" class="pagination-link" aria-label="Goto page 2">2</a>
-                  </li>
-                  <li>
-                    <a href="#" class="pagination-link" aria-label="Goto page 3">3</a>
-                  </li>
+                    <li>
+                        <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+                    </li>
+                    <li>
+                        <a href="#" class="pagination-link" aria-label="Goto page 2">2</a>
+                    </li>
+                    <li>
+                        <a href="#" class="pagination-link" aria-label="Goto page 3">3</a>
+                    </li>
                 </ul>
-              </nav>
-
-              <!-- Modal -->
-              <div id="modalPelicula" class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Registro de Película</p>
-                        <button type="button" class="delete" aria-label="close"></button>
-                    </header>
-                    <section class="modal-card-body">
-                        <form id="formPelicula">
-                            <div class="field">
-                                <label class="label" for="titulo">Título</label>
-                                <div class="control">
-                                    <input id="titulo" class="input" type="text" placeholder="Ej. Spider-Man 2" />
-                                </div>
-                            </div>
-        
-                            <div class="field">
-                                <label class="label" for="genero">Género</label>
-                                <div class="control">
-                                    <input id="genero" class="input" type="text" placeholder="Ej. Acción" />
-                                </div>
-                            </div>
-        
-                            <div class="field">
-                                <label class="label" for="anio">Año</label>
-                                <div class="control">
-                                    <input id="anio" class="input" type="number" placeholder="2024" />
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <div class="buttons">
-                            <button type="button" class="button is-success">Guardar</button>
-                            <button type="button" class="button js-close-modal">Cancelar</button>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-
-            <!-- Script para que el modal pueda funcionar -->
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const openButtons = document.querySelectorAll(".js-open-modal");
-                    openButtons.forEach((btn) => {
-                        btn.addEventListener("click", () => {
-                            const targetId = btn.getAttribute("data-target");
-                            const modal = document.getElementById(targetId);
-                            if (modal) {
-                                modal.classList.add("is-active");
-                            }
-                        });
-                    });
-        
-                    const modals = document.querySelectorAll(".modal");
-                    modals.forEach((modal) => {
-                        const closeTriggers = modal.querySelectorAll(
-                            ".modal-background, .delete, .js-close-modal"
-                        );
-                        closeTriggers.forEach((trigger) => {
-                            trigger.addEventListener("click", () => {
-                                modal.classList.remove("is-active");
-                            });
-                        });
-                    });
-        
-                    const burgers = document.querySelectorAll(".navbar-burger");
-                    burgers.forEach((burger) => {
-                        burger.addEventListener("click", () => {
-                            const targetId = burger.dataset.target;
-                            const targetMenu = document.getElementById(targetId);
-                            burger.classList.toggle("is-active");
-                            if (targetMenu) {
-                                targetMenu.classList.toggle("is-active");
-                            }
-                        });
-                    });
-                });
-            </script>
+            </nav>
+        </div>
 
     </section>
+
+    <!-- Modal -->
+    <div id="modalPelicula" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title" id="tituloModal">Registro de Película</p>
+                <button type="button" class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="formPelicula">
+                    <div class="field">
+                        <label class="label" for="titulo">Título</label>
+                        <div class="control">
+                            <input id="titulo" class="input" type="text" placeholder="Ej. Spider-Man 2" required />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="genero">Género</label>
+                        <div class="control">
+                            <input id="genero" class="input" type="text" placeholder="Ej. Acción" required />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="anio">Año</label>
+                        <div class="control">
+                            <input id="anio" class="input" type="number" placeholder="2024" required />
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <div class="buttons">
+                    <button type="button" id="btnGuardarPelicula" class="button is-success">Guardar</button>
+                    <button type="button" class="button js-close-modal">Cancelar</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Script para modal, navbar, CRUD en tabla y paginación -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("modalPelicula");
+            const form = document.getElementById("formPelicula");
+            const tituloModal = document.getElementById("tituloModal");
+            const inputTitulo = document.getElementById("titulo");
+            const inputGenero = document.getElementById("genero");
+            const inputAnio = document.getElementById("anio");
+            const btnAbrirNuevo = document.getElementById("btnAbrirNuevo");
+            const btnGuardar = document.getElementById("btnGuardarPelicula");
+            const cuerpoTabla = document.getElementById("cuerpoTabla");
+            const listaPaginas = document.getElementById("listaPaginas");
+            const btnAnterior = document.getElementById("btnAnterior");
+            const btnSiguiente = document.getElementById("btnSiguiente");
+
+            let filaEditando = null;
+            let paginaActual = 1;
+            const filasPorPagina = 3;
+
+            function abrirModal() {
+                modal.classList.add("is-active");
+                inputTitulo.focus();
+            }
+
+            function cerrarModal() {
+                modal.classList.remove("is-active");
+                form.reset();
+                filaEditando = null;
+            }
+
+            btnAbrirNuevo.addEventListener("click", () => {
+                filaEditando = null;
+                tituloModal.textContent = "Registro de Película";
+                form.reset();
+                abrirModal();
+            });
+
+            modal.querySelectorAll(".modal-background, .delete, .js-close-modal").forEach((trigger) => {
+                trigger.addEventListener("click", cerrarModal);
+            });
+
+            // Menú hamburguesa en móviles
+            document.querySelectorAll(".navbar-burger").forEach((burger) => {
+                burger.addEventListener("click", () => {
+                    const targetMenu = document.getElementById(burger.dataset.target);
+                    burger.classList.toggle("is-active");
+                    if (targetMenu) {
+                        targetMenu.classList.toggle("is-active");
+                    }
+                });
+            });
+
+            function obtenerSiguienteId() {
+                const filas = Array.from(cuerpoTabla.querySelectorAll("tr"));
+                let maxId = 0;
+                filas.forEach((fila) => {
+                    const idNum = parseInt(fila.cells[0].textContent, 10);
+                    if (!isNaN(idNum) && idNum > maxId) {
+                        maxId = idNum;
+                    }
+                });
+                return maxId + 1;
+            }
+
+            function crearFila(id, titulo, genero, anio) {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${id}</td>
+                    <td>${titulo}</td>
+                    <td>${genero}</td>
+                    <td>${anio}</td>
+                    <td>
+                        <div class="buttons are-small">
+                            <button type="button" class="button is-warning btn-editar" title="Editar">
+                                <span class="icon">
+                                    <i class="bi bi-pencil-square"></i>
+                                </span>
+                            </button>
+                            <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
+                                <span class="icon">
+                                    <i class="bi bi-trash"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                return tr;
+            }
+
+            // Delegación de eventos para Editar y Eliminar
+            cuerpoTabla.addEventListener("click", (e) => {
+                const btnEditar = e.target.closest(".btn-editar");
+                const btnEliminar = e.target.closest(".btn-eliminar");
+
+                if (btnEditar) {
+                    const fila = btnEditar.closest("tr");
+                    filaEditando = fila;
+                    tituloModal.textContent = "Editar Película";
+                    inputTitulo.value = fila.cells[1].textContent.trim();
+                    inputGenero.value = fila.cells[2].textContent.trim();
+                    inputAnio.value = fila.cells[3].textContent.trim();
+                    abrirModal();
+                }
+
+                if (btnEliminar) {
+                    const fila = btnEliminar.closest("tr");
+                    fila.remove();
+                    actualizarPaginacion();
+                }
+            });
+
+            // Guardar nuevo o actualizar existente
+            btnGuardar.addEventListener("click", () => {
+                const titulo = inputTitulo.value.trim();
+                const genero = inputGenero.value.trim();
+                const anio = inputAnio.value.trim();
+
+                if (!titulo || !genero || !anio) {
+                    alert("Completa todos los campos antes de guardar.");
+                    return;
+                }
+
+                if (filaEditando) {
+                    filaEditando.cells[1].textContent = titulo;
+                    filaEditando.cells[2].textContent = genero;
+                    filaEditando.cells[3].textContent = anio;
+                } else {
+                    const nuevoId = obtenerSiguienteId();
+                    const nuevaFila = crearFila(nuevoId, titulo, genero, anio);
+                    cuerpoTabla.appendChild(nuevaFila);
+                    const totalFilas = cuerpoTabla.querySelectorAll("tr").length;
+                    paginaActual = Math.ceil(totalFilas / filasPorPagina);
+                }
+
+                cerrarModal();
+                actualizarPaginacion();
+            });
+
+            // Paginación real sobre las filas de la tabla
+            function actualizarPaginacion() {
+                const filas = Array.from(cuerpoTabla.querySelectorAll("tr"));
+                const totalPaginas = Math.max(1, Math.ceil(filas.length / filasPorPagina));
+
+                if (paginaActual > totalPaginas) {
+                    paginaActual = totalPaginas;
+                }
+
+                const inicio = (paginaActual - 1) * filasPorPagina;
+                const fin = inicio + filasPorPagina;
+
+                filas.forEach((fila, indice) => {
+                    fila.style.display = indice >= inicio && indice < fin ? "" : "none";
+                });
+
+                // Botones Anterior y Siguiente
+                if (paginaActual <= 1) {
+                    btnAnterior.classList.add("is-disabled");
+                    btnAnterior.setAttribute("aria-disabled", "true");
+                } else {
+                    btnAnterior.classList.remove("is-disabled");
+                    btnAnterior.removeAttribute("aria-disabled");
+                }
+
+                if (paginaActual >= totalPaginas) {
+                    btnSiguiente.classList.add("is-disabled");
+                    btnSiguiente.setAttribute("aria-disabled", "true");
+                } else {
+                    btnSiguiente.classList.remove("is-disabled");
+                    btnSiguiente.removeAttribute("aria-disabled");
+                }
+
+                // Números de página
+                listaPaginas.innerHTML = "";
+                for (let i = 1; i <= totalPaginas; i++) {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.className = "pagination-link" + (i === paginaActual ? " is-current" : "");
+                    a.textContent = i;
+                    a.setAttribute("aria-label", `Ir a la página ${i}`);
+                    if (i === paginaActual) {
+                        a.setAttribute("aria-current", "page");
+                    }
+                    a.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        paginaActual = i;
+                        actualizarPaginacion();
+                    });
+                    li.appendChild(a);
+                    listaPaginas.appendChild(li);
+                }
+            }
+
+            btnAnterior.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (paginaActual > 1) {
+                    paginaActual--;
+                    actualizarPaginacion();
+                }
+            });
+
+            btnSiguiente.addEventListener("click", (e) => {
+                e.preventDefault();
+                const totalPaginas = Math.max(
+                    1,
+                    Math.ceil(cuerpoTabla.querySelectorAll("tr").length / filasPorPagina)
+                );
+                if (paginaActual < totalPaginas) {
+                    paginaActual++;
+                    actualizarPaginacion();
+                }
+            });
+
+            actualizarPaginacion();
+        });
+    </script>
 </body>
 
 </html>
