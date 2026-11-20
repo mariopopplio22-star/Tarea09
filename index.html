@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="level-right">
-                    <button type="button" class="button is-info js-open-modal" data-target="modalPelicula">
+                    <button type="button" id="btnAbrirNuevo" class="button is-info js-open-modal" data-target="modalPelicula">
                         <span class="icon">
                             <i class="bi bi-plus-lg"></i>
                         </span>
@@ -102,7 +102,7 @@
 
             <!-- Tabla de peliculas -->
             <div class="table-container">
-                <table class="table is-fullwidth is-striped is-hoverable">
+                <table class="table is-fullwidth is-striped is-hoverable" id="tablaPeliculas">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -112,7 +112,7 @@
                             <th>Operaciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="cuerpoTabla">
                         <tr>
                             <td>1</td>
                             <td>El gran showman</td>
@@ -120,15 +120,14 @@
                             <td>2017</td>
                             <td>
                                 <div class="buttons are-small">
-                                    <button type="button" class="button is-warning" title="Editar">
+                                    <button type="button" class="button is-warning btn-editar" title="Editar">
                                         <span class="icon">
                                             <i class="bi bi-pencil-square"></i>
-                                            <!-- Esto vendría a ser el ícono de editar -->
                                         </span>
                                     </button>
-                                    <button type="button" class="button is-danger" title="Eliminar">
+                                    <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
                                         <span class="icon">
-                                            <i class="bi bi-trash"></i> <!-- Esto vendría a ser el ícono de editar -->
+                                            <i class="bi bi-trash"></i>
                                         </span>
                                     </button>
                                 </div>
@@ -141,12 +140,12 @@
                             <td>2004</td>
                             <td>
                                 <div class="buttons are-small">
-                                    <button type="button" class="button is-warning" title="Editar">
+                                    <button type="button" class="button is-warning btn-editar" title="Editar">
                                         <span class="icon">
                                             <i class="bi bi-pencil-square"></i>
                                         </span>
                                     </button>
-                                    <button type="button" class="button is-danger" title="Eliminar">
+                                    <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
                                         <span class="icon">
                                             <i class="bi bi-trash"></i>
                                         </span>
@@ -161,12 +160,12 @@
                             <td>1999</td>
                             <td>
                                 <div class="buttons are-small">
-                                    <button type="button" class="button is-warning" title="Editar">
+                                    <button type="button" class="button is-warning btn-editar" title="Editar">
                                         <span class="icon">
                                             <i class="bi bi-pencil-square"></i>
                                         </span>
                                     </button>
-                                    <button type="button" class="button is-danger" title="Eliminar">
+                                    <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
                                         <span class="icon">
                                             <i class="bi bi-trash"></i>
                                         </span>
@@ -181,12 +180,12 @@
                             <td>1968</td>
                             <td>
                                 <div class="buttons are-small">
-                                    <button type="button" class="button is-warning" title="Editar">
+                                    <button type="button" class="button is-warning btn-editar" title="Editar">
                                         <span class="icon">
                                             <i class="bi bi-pencil-square"></i>
                                         </span>
                                     </button>
-                                    <button type="button" class="button is-danger" title="Eliminar">
+                                    <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
                                         <span class="icon">
                                             <i class="bi bi-trash"></i>
                                         </span>
@@ -201,12 +200,12 @@
                             <td>2026</td>
                             <td>
                                 <div class="buttons are-small">
-                                    <button type="button" class="button is-warning" title="Editar">
+                                    <button type="button" class="button is-warning btn-editar" title="Editar">
                                         <span class="icon">
                                             <i class="bi bi-pencil-square"></i>
                                         </span>
                                     </button>
-                                    <button type="button" class="button is-danger" title="Eliminar">
+                                    <button type="button" class="button is-danger btn-eliminar" title="Eliminar">
                                         <span class="icon">
                                             <i class="bi bi-trash"></i>
                                         </span>
@@ -218,20 +217,10 @@
                 </table>
             </div>
             <!-- La paginación -->
-            <nav class="pagination" role="navigation" aria-label="pagination">
-                <a class="pagination-previous is-disabled" title="This is the first page">Anterior</a>
-                <a href="#" class="pagination-next">Siguiente</a>
-                <ul class="pagination-list">
-                    <li>
-                        <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link" aria-label="Goto page 2">2</a>
-                    </li>
-                    <li>
-                        <a href="#" class="pagination-link" aria-label="Goto page 3">3</a>
-                    </li>
-                </ul>
+            <nav class="pagination" role="navigation" aria-label="pagination" id="paginacion">
+                <a class="pagination-previous" id="btnAnterior" title="Página anterior">Anterior</a>
+                <a class="pagination-next" id="btnSiguiente" title="Página siguiente">Siguiente</a>
+                <ul class="pagination-list" id="listaPaginas"></ul>
             </nav>
         </div>
 
