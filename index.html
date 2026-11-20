@@ -91,7 +91,8 @@
                     </div>
                 </div>
                 <div class="level-right">
-                    <button type="button" id="btnAbrirNuevo" class="button is-info js-open-modal" data-target="modalPelicula">
+                    <button type="button" id="btnAbrirNuevo" class="button is-info js-open-modal"
+                        data-target="modalPelicula">
                         <span class="icon">
                             <i class="bi bi-plus-lg"></i>
                         </span>
@@ -217,7 +218,7 @@
                 </table>
             </div>
             <!-- La paginación -->
-            <nav class="pagination" role="navigation" aria-label="pagination" id="paginacion">
+            <nav class="pagination is-centered mt-4" role="navigation" aria-label="pagination" id="paginacion">
                 <a class="pagination-previous" id="btnAnterior" title="Página anterior">Anterior</a>
                 <a class="pagination-next" id="btnSiguiente" title="Página siguiente">Siguiente</a>
                 <ul class="pagination-list" id="listaPaginas"></ul>
@@ -419,7 +420,7 @@
                 const fin = inicio + filasPorPagina;
 
                 filas.forEach((fila, indice) => {
-                    fila.style.display = indice >= inicio && indice < fin ? "" : "none";
+                    fila.style.display = indice >= inicio && indice < fin ? "table-row" : "none";
                 });
 
                 // Botones Anterior y Siguiente
